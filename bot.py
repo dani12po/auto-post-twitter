@@ -103,12 +103,45 @@ def post_next_tweet_with_image():
     except tweepy.TweepyException as e:
         print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Terjadi kesalahan saat memposting tweet: {e}")
         print("Postingan gagal. Nomor urutan tidak diubah.")
-        
-# --- 5. Penjadwalan Bot ---
-schedule.every(1).minutes.do(post_next_tweet_with_image)
+
+# --- 5. Fungsi untuk Mendapatkan Jadwal dari Pengguna ---
+def get_schedule_from_user():
+    """Menampilkan menu dan meminta input dari pengguna untuk mengatur jadwal."""
+    print("\n--- Pengaturan Jadwal Posting ---")
+    print("Pilih interval waktu posting:")
+    print("1: Menit")
+    print("2: Jam")
+    print("3: Hari")
+    
+    while True:
+        choice = input("Masukkan pilihan (1/2/3): ")
+        if choice in ['1', '2', '3']:
+            break
+        print("Pilihan tidak valid. Silakan coba lagi.")
+    
+    while True:
+        try:
+            frequency = int(input("Masukkan angka frekuensi (misal: 10 untuk setiap 10 menit): "))
+            if frequency > 0:
+                break
+            print("Angka harus lebih besar dari 0.")
+        except ValueError:
+            print("Input tidak valid. Masukkan angka.")
+            
+    if choice == '1':
+        schedule.every(frequency).minutes.do(post_next_tweet_with_image)
+        print(f"\nBot akan memposting setiap {frequency} menit.")
+    elif choice == '2':
+        schedule.every(frequency).hours.do(post_next_tweet_with_image)
+        print(f"\nBot akan memposting setiap {frequency} jam.")
+    elif choice == '3':
+        schedule.every(frequency).days.do(post_next_tweet_with_image)
+        print(f"\nBot akan memposting setiap {frequency} hari.")
 
 # --- 6. Jalankan Bot ---
-print("Bot sedang berjalan. Menunggu jadwal posting pertama...")
+get_schedule_from_user() # Panggil fungsi menu di awal
+
+print("\nBot sedang berjalan. Menunggu jadwal posting pertama...")
 
 while True:
     schedule.run_pending()
