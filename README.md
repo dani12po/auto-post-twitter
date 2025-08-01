@@ -77,8 +77,8 @@ ACCESS_TOKEN_SECRET="masukkan_access_token_secret_kamu"
   **Contoh `list.txt`:**
 
   ```
-  Halo! Postingan pertama dari bot nih. | gambar1.jpg
-  Motivasi hari ini: "Jangan gampang nyerah ya!" | gambar2.png
+  kamu ngentoddddddd | gambar1.jpg
+  gratisan jan banyak komen!!!! | gambar2.png
   ```
 
 * Bikin file **`post_counter.txt`** dan isi dengan angka `0`. Ini biar bot tahu harus mulai dari postingan pertama.
