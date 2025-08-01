@@ -1,95 +1,31 @@
-# auto-post-twitter
-Auto-Post Twitter (X) Bot
-Sebuah bot Python sederhana untuk memposting tweet secara otomatis dan berurutan dari daftar yang sudah ditentukan, lengkap dengan gambar yang menyertainya. Bot ini cocok untuk mengelola konten yang sudah dijadwalkan tanpa intervensi manual.
-
-✨ Fitur Utama
-Posting Terjadwal: Bot akan memposting tweet pada interval waktu yang ditentukan.
-
-Pengaturan Jadwal Interaktif: Memungkinkan pengguna untuk mengatur interval posting (menit, jam, atau hari) melalui menu interaktif di terminal saat bot pertama kali dijalankan.
-
-Urutan Posting: Memposting konten secara berurutan sesuai dengan nomor baris di file list.txt.
-
-Media Pendukung: Mengunggah dan menyertakan gambar dari folder lokal di setiap tweet.
-
-Pengamanan API: Menggunakan file .env untuk menyimpan kunci API secara aman, menjaganya dari kebocoran saat diunggah ke GitHub.
-
-Sistem Log: Menampilkan log konsol yang jelas untuk melacak status postingan yang berhasil atau gagal.
-
-🚀 Persyaratan
-Pastikan kamu sudah menginstal perangkat lunak berikut di komputermu:
-
-Python 3.6+
-
-Git (opsional, untuk mengelola proyek dengan Git)
-
-🛠️ Instalasi
-Ikuti langkah-langkah di bawah ini untuk menyiapkan bot di perangkatmu.
-
-1. Klon Repositori
-Jika kamu menggunakan Git, klon repositori ini ke komputer kamu:
-
-git clone https://github.com/dani12po/auto-post-twitter.git
+Auto-Post Twitter (X) BotSantai saja! Ini bot Python sederhana yang bisa bikin tweet otomatis, lengkap dengan gambarnya. Cocok banget buat kamu yang mau ngatur konten tapi nggak mau repot.✨ Fitur-fitur KerennyaPosting Otomatis: Bot ini bisa tweet sendiri, sesuai jadwal yang kamu mau.Jadwal Gampang Diatur: Mau tweet setiap 5 menit? Atau setiap hari jam 9 pagi? Tinggal atur lewat terminal, gampang banget!Posting Berurutan: Kontennya dijamin rapi, berurutan dari atas ke bawah di list.txt.Ada Gambarnya: Tiap tweet bisa sekalian diunggah dengan gambar dari folder kamu. Keren, kan?API Aman: Kunci API kamu disimpan aman di file .env, jadi nggak bakal bocor di GitHub.Laporannya Jelas: Bot akan kasih tahu di terminal kalau postingannya berhasil atau gagal. Jadi kamu bisa pantau terus!🚀 PersiapanSebelum mulai, pastikan kamu sudah punya:Python 3.6+Git (buat yang suka pakai Git, ya!)🛠️ Cara PakainyaIkuti langkah-langkah ini, gampang kok!1. Ambil ProyeknyaKalau kamu pakai Git, clone aja proyek ini ke komputermu:git clone https://github.com/namakamu/auto-post-twitter.git
 cd auto-post-twitter
 
-2. Instal Ketergantungan
-Instal semua pustaka Python yang dibutuhkan dari file requirements.txt:
+2. Pasang Dulu yang DibutuhkanBuka terminal, terus ketik perintah ini buat pasang semua yang diperlukan:pip install -r requirements.txt
 
-pip install -r requirements.txt
-
-3. Konfigurasi API
-Daftar untuk mendapatkan akses Developer Account di developer.x.com.
-
-Buat aplikasi baru dengan izin "Read and Write".
-
-Salin Consumer Key, Consumer Secret, Access Token, dan Access Token Secret kamu.
-
-Buat file baru bernama .env di direktori utama proyek.
-
-Tempelkan kunci API kamu ke dalam file .env dengan format berikut:
-
-CONSUMER_KEY="masukkan_consumer_key_kamu"
+3. Atur API-nyaDaftar dulu di developer.x.com buat dapetin Developer Account.Bikin aplikasi baru, jangan lupa kasih izin "Read and Write".Salin semua kunci yang ada (Consumer Key, Consumer Secret, dll).Bikin file baru di folder proyek, namanya .env.Tempel kunci-kunci tadi ke file .env dengan format ini:CONSUMER_KEY="masukkan_consumer_key_kamu"
 CONSUMER_SECRET="masukkan_consumer_secret_kamu"
 ACCESS_TOKEN="masukkan_access_token_kamu"
 ACCESS_TOKEN_SECRET="masukkan_access_token_secret_kamu"
 
-⚠️ Peringatan: Jangan pernah membagikan file .env kamu atau mengunggahnya ke GitHub. File .gitignore akan otomatis mengabaikannya.
+⚠️ Awas ya: Jangan sekali-kali upload file .env ini ke GitHub! Tenang, .gitignore udah diatur kok buat ngelindunginnya.⚙️ Cara Menjalankan Bot1. Siapkan KontenBikin folder images/ dan taruh semua gambarmu di sana.Bikin file list.txt dan tulis tweet kamu. Formatnya begini: [ISI TWEET] | [NAMA FILE GAMBAR].Contoh list.txt:Halo! Postingan pertama dari bot nih. | gambar1.jpg
+Motivasi hari ini: "Jangan gampang nyerah ya!" | gambar2.png
 
-⚙️ Penggunaan Bot
-1. Siapkan Konten Postingan
-Buat folder bernama images/ dan letakkan semua file gambar kamu di sana.
+Bikin file post_counter.txt dan isi dengan angka 0. Ini biar bot tahu harus mulai dari postingan pertama.2. Atur Jadwal & Jalanin!Jalankan bot dari terminal. Nanti akan ada menu interaktif yang muncul:python bot.py
 
-Buat file list.txt dan isi dengan tweet dan nama file gambar yang sesuai. Gunakan format [ISI TWEET] | [NAMA FILE GAMBAR].
-
-Contoh list.txt:
-
-Selamat pagi! Ini adalah post pertama dari bot saya. | gambar1.jpg
-Kutipan inspiratif hari ini: "Jangan pernah menyerah." | gambar2.png
-
-Buat file post_counter.txt dan isi dengan angka 0. Ini akan menentukan bot untuk memulai dari postingan pertama.
-
-2. Jalankan dan Atur Jadwal Bot
-Jalankan skrip Python dari terminal. Bot akan secara otomatis menampilkan menu interaktif:
-
-python bot.py
-
-Setelah menjalankan perintah di atas, kamu akan diminta untuk memilih interval dan frekuensi postingan:
-
---- Pengaturan Jadwal Posting ---
-Pilih interval waktu posting:
+Setelah perintah itu, kamu akan ditanya mau atur jadwal seperti apa:--- Atur Jadwal Posting ---
+Pilih mau posting setiap:
 1: Menit
 2: Jam
 3: Hari
-Masukkan pilihan (1/2/3): [masukkan pilihanmu]
-Masukkan angka frekuensi (misal: 10 untuk setiap 10 menit): [masukkan angka]
+Masukkan pilihanmu (1/2/3): [pilih salah satu]
+Masukkan angkanya (misal: 10 untuk setiap 10 menit): [masukkan angka]
 
-Bot akan mulai berjalan di background dan memposting sesuai jadwal yang telah kamu atur.
-
-📂 Struktur File Proyek
-.
-├── .env                  # File untuk kunci API (jangan di-commit)
-├── .gitignore            # File untuk mengabaikan file tertentu
-├── bot.py                # Skrip utama bot
+Selesai deh! Bot akan langsung jalan di belakang layar sesuai jadwal yang kamu atur.📂 Isi Folder Proyek.
+├── .env                  # Kunci API kamu (jangan di-upload)
+├── .gitignore            # File yang diabaikan Git
+├── bot.py                # Kode utamanya
 ├── list.txt              # Daftar konten tweet dan gambar
-├── post_counter.txt      # Pelacak nomor postingan
-├── requirements.txt      # Daftar pustaka yang dibutuhkan
-└── images/               # Folder untuk menyimpan file gambar
+├── post_counter.txt      # Buat nyimpen urutan postingan
+├── requirements.txt      # Daftar yang perlu di-install
+└── images/               # Folder buat nyimpen gambar
