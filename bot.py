@@ -2,13 +2,17 @@ import tweepy
 import schedule
 import time
 import os
+from dotenv import load_dotenv
 
 # --- 1. Konfigurasi Kunci dan Token API ---
-# PENTING: Ganti dengan kunci dan token milikmu yang valid.
-consumer_key = "AOXlmS44AY2dsqYvimbOHVK5i"
-consumer_secret = "NKs240ePUX8rydli9DYk3AH7hk6alLvtLIpsKaHuvl60qdGBVN"
-access_token = "1448789471210532879-LHE8uf6MOFfAzm4atMrNsTisEWPSGa"
-access_token_secret = "mWAaWJKU4m2BIb4AgllgGvZQ8FvhR6zJTE0plOYrhGCAc"
+# Muat variabel lingkungan dari file .env
+load_dotenv()
+
+# Ambil kunci dan token dari variabel lingkungan
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
+access_token = os.getenv("ACCESS_TOKEN")
+access_token_secret = os.getenv("ACCESS_TOKEN_SECRET")
 
 # --- 2. Inisiasi Klien API ---
 try:
@@ -26,7 +30,7 @@ try:
     )
     print("Inisiasi klien API v1.1 & v2 berhasil! Bot siap beroperasi.")
 except Exception as e:
-    print(f"ERROR: Gagal inisiasi klien. Pastikan kunci API sudah benar.")
+    print(f"ERROR: Gagal inisiasi klien. Pastikan kunci API sudah benar di file .env.")
     print(e)
     exit()
 
@@ -83,7 +87,6 @@ def post_next_tweet_with_image():
     media_ids = []
     if os.path.exists(image_path):
         try:
-            # PENTING: Gunakan 'api' untuk mengunggah media
             response_media = api.media_upload(image_path)
             media_ids.append(response_media.media_id)
             print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Berhasil mengunggah media: {image_file}")
@@ -91,7 +94,6 @@ def post_next_tweet_with_image():
             print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Terjadi kesalahan saat mengunggah media: {e}")
             
     try:
-        # PENTING: Gunakan 'client' untuk membuat tweet dengan media_ids
         response = client.create_tweet(text=tweet_text, media_ids=media_ids)
         print(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Berhasil memposting tweet ke-{current_post_number}: {tweet_text}")
         print(f"ID Tweet: {response.data['id']}")
