@@ -33,8 +33,7 @@ Ikuti langkah-langkah ini, gampang kok!
 Kalau kamu pakai Git, *clone* aja proyek ini ke komputermu:
 
 ```bash
-git clone [https://github.com/namakamu/auto-post-twitter.git](https://github.com/namakamu/auto-post-twitter.git)
-cd auto-post-twitter
+git clone [https://github.com/dani12po/auto-post-twitter.git
 ```
 
 #### 2. Pasang Dulu yang Dibutuhkan
