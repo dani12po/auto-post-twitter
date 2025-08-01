@@ -109,7 +109,7 @@ Selesai deh! Bot akan langsung jalan di belakang layar sesuai jadwal yang kamu a
 
 ```
 .
-├── .env                  # Kunci API kamu (jangan di-upload)
+├── .env                  # Kunci API kamu
 ├── .gitignore            # File yang diabaikan Git
 ├── bot.py                # Kode utamanya
 ├── list.txt              # Daftar konten tweet dan gambar
